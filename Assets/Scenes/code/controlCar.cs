@@ -12,6 +12,11 @@ public class controlCar : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void OnCollisionEnter(Collision collision)
+    {
+        //rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
     void Update()
     {
         if (Input.GetKey(KeyCode.J))
@@ -20,15 +25,20 @@ public class controlCar : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.K))
         {
-            rb.AddForce(new Vector3(Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), -0.25f, Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y))*-0.1f);
+            //rb.AddForce(new Vector3(Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), -0.25f, Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y))*-0.5f);
+
+            rb.AddForce(rb.velocity * -0.15f);
         }
+        
+        rb.AddForce(rb.velocity*-0.08f);
+
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(0, -1, 0);
+            transform.Rotate(0, -0.2f, 0);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(0, 1, 0);
+            transform.Rotate(0, 0.2f, 0);
         }
     }
 }
