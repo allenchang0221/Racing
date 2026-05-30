@@ -8,6 +8,7 @@ public class controlCar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -27,24 +28,24 @@ public class controlCar : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.J))
         {
-            rb.AddForce(new Vector3(Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), 0, Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y)));
+            rb.AddForce(new Vector3(Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), 0, Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y))*1.5f);
         }
         if (Input.GetKey(KeyCode.K))
         {
             //rb.AddForce(new Vector3(Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), -0.25f, Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y))*-0.5f);
 
-            rb.AddForce(rb.velocity * -0.15f);
+            rb.AddForce(rb.velocity * -0.5f);
         }
 
         rb.AddForce(rb.velocity * -0.08f);
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(0, -0.5f, 0);
+            transform.Rotate(0, -0.8f, 0);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(0, 0.5f, 0);
+            transform.Rotate(0, 0.8f, 0);
         }
     }
 }
