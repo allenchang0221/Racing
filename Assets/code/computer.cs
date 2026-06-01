@@ -10,17 +10,18 @@ public class computer : MonoBehaviour
         Application.targetFrameRate = 60;
     }
     int a = 0;
+    float i = 0;
     // Update is called once per frame
     void Update()
     {
         a += 1;
-        for (int i = 0; i < 100; i++)
-        {
-            if (a > 60)
-            {
-                transform.position = new Vector3(i, 0, Mathf.Sin(i / 8) * 10);
-                a = 0;
-            }
-        }
+
+        //if (a > 60)
+        //{
+        transform.position = new Vector3(i, 0, Mathf.Sin(i / 8) * 10);
+        a = 0;
+        i += 0.048f;
+        //}
+
     }
 }
