@@ -51,14 +51,14 @@ public class controlCar : MonoBehaviour
         //transform.eulerAngles = rb.velocity;
         if (Input.GetKey(KeyCode.A))
         {// Smooth physics-based rotation
-            Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, -(rb.velocity.magnitude)/10, 0));
+            Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, -2, 0));
             rb.MoveRotation(rb.rotation * deltaRotation);
             //rb.AddForce(new Vector3(Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), 0, Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y)));
 
         }
         if (Input.GetKey(KeyCode.D))
         {// Smooth physics-based rotation
-            Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, (rb.velocity.magnitude / 10), 0));
+            Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, 2, 0));
             rb.MoveRotation(rb.rotation * deltaRotation);
             //rb.AddForce(new Vector3(Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), 0, Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y)));
         }
