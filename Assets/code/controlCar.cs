@@ -12,18 +12,18 @@ public class controlCar : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
-    private void OnCollisionEnter(Collision collision)
-    {
-        //rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    //rb.velocity = Vector3.zero;
+    //    rb.angularVelocity = Vector3.zero;
+    //}
 
     public GameObject drift;
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
-            transform.position = new Vector3(transform.position.x, 0, Mathf.Sin(transform.position.x / 8) * 50);
+            transform.position = new Vector3(transform.position.x, 1, Mathf.Sin(transform.position.x / 8) * 50);
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
@@ -37,9 +37,9 @@ public class controlCar : MonoBehaviour
             //rb.AddForce(-1*new Vector3(Mathf.Sin(Mathf.Deg2Rad * ((transform.eulerAngles.y + engleTurn) % 360)), 0, Mathf.Cos(Mathf.Deg2Rad * ((transform.eulerAngles.y + engleTurn) % 360))) );
             rb.AddForce(-1 * Vector3.Project(rb.velocity, transform.right) * 0.00125f);
             GameObject driftLeft = Instantiate(drift);
-            driftLeft.transform.position = transform.position + new Vector3(.1f, 0, 0)-transform.forward;
+            driftLeft.transform.position = transform.position + new Vector3(.21f, -1, 0)-transform.forward/3;
             GameObject driftRight = Instantiate(drift);
-            driftRight.transform.position = transform.position - new Vector3(.1f, 0, 0)- transform.forward;
+            driftRight.transform.position = transform.position - new Vector3(.42f, 1, 0)- transform.forward/3;
         }
         if (Input.GetKey(KeyCode.J) && rb.velocity.magnitude < 20)
         {
