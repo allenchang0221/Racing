@@ -23,7 +23,7 @@ public class controlCar : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
-            transform.position = new Vector3(transform.position.x, 1, Mathf.Sin(transform.position.x / 8) * 50);
+            transform.position = new Vector3(transform.position.x, 0, Mathf.Sin(transform.position.x / 8) * 50);
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
@@ -37,9 +37,9 @@ public class controlCar : MonoBehaviour
             //rb.AddForce(-1*new Vector3(Mathf.Sin(Mathf.Deg2Rad * ((transform.eulerAngles.y + engleTurn) % 360)), 0, Mathf.Cos(Mathf.Deg2Rad * ((transform.eulerAngles.y + engleTurn) % 360))) );
             rb.AddForce(-1 * Vector3.Project(rb.velocity, transform.right) * 0.00125f);
             GameObject driftLeft = Instantiate(drift);
-            driftLeft.transform.position = transform.position + new Vector3(.21f, -1, 0)-transform.forward/3;
+            driftLeft.transform.position = transform.position + new Vector3(.21f, 0, 0)-transform.forward;
             GameObject driftRight = Instantiate(drift);
-            driftRight.transform.position = transform.position - new Vector3(.42f, 1, 0)- transform.forward/3;
+            driftRight.transform.position = transform.position - new Vector3(.42f, 0, 0)- transform.forward;
         }
         if (Input.GetKey(KeyCode.J) && rb.velocity.magnitude < 20)
         {
