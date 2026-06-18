@@ -12,11 +12,13 @@ public class setRoad : MonoBehaviour
         {
             GameObject cubeCopy = Instantiate(cube);
             cubeCopy.transform.position = new Vector3(i, 0.5f, Mathf.Sin(i / 8) * 50-20);
+            //cubeCopy.transform.position = new Vector3(i,0.5f,Mathf.Abs(i-50)+5-50);
         }
         for (float i = 0; i < 100; i += 0.05f)
         {
             GameObject cubeCopy = Instantiate(cube);
             cubeCopy.transform.position = new Vector3(i, 0.5f, Mathf.Sin(i / 8) * 50+20);
+            //cubeCopy.transform.position = new Vector3(i, 0.5f, Mathf.Abs(i - 50) - 5-50);
         }
     }
 
