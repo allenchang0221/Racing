@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class controlCar : MonoBehaviour
 {
     Rigidbody rb;
+    public static int times = 0;
     // Start is called before the first frame update
     void Start()
     {
+        times = 0;
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody>();
     }
@@ -66,5 +69,10 @@ public class controlCar : MonoBehaviour
         }
         rb.angularVelocity *= 0.98f;
         Debug.Log(rb.velocity.magnitude+" "+rb.angularVelocity.magnitude);
+        times++;
+        if (transform.position.x > 90)
+        {
+            SceneManager.LoadScene("home");
+        }
     }
 }
