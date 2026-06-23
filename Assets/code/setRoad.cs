@@ -22,7 +22,11 @@ public class setRoad : MonoBehaviour
             //cubeCopy.transform.position = new Vector3(i, 0.5f, Mathf.Abs(i - 50) - 5-50);
         }
     }
-
+    public void back()
+    {
+        controlCar.times = 100000;
+        SceneManager.LoadScene("home");
+    }
     // Update is called once per frame
     void Update()
     {

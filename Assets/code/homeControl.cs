@@ -20,7 +20,7 @@ public class homeControl : MonoBehaviour
         {
             PlayerPrefs.SetFloat("HIGH", controlCar.times);
         }
-        high.text = "Highest record   " + PlayerPrefs.GetFloat("HIGH").ToString();
+        high.text = "Highest record   " + (PlayerPrefs.GetFloat("HIGH")/60).ToString("F2");
 
     }
 

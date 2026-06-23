@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   last: {fileID: 925297740}
-  high: {fileID: 0}
+  high: {fileID: 473591971}
 --- !u!1 &473591969
 GameObject:
   m_ObjectHideFlags: 0
