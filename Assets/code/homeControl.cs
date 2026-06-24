@@ -27,7 +27,7 @@ public class homeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PlayerPrefs.GetFloat("HIGH"));
+        Debug.Log((controlCar.times).ToString()+"   "+PlayerPrefs.GetFloat("HIGH"));
     }
     public void START()
     {
