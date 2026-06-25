@@ -12,6 +12,7 @@ public class controlCar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //PlayerPrefs.DeleteKey("HIGH");
         times = 0;
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody>();
@@ -48,7 +49,7 @@ public class controlCar : MonoBehaviour
         if (rb.velocity.magnitude < 20)
         {
             rb.angularVelocity *= 0.98f;
-            rb.AddForce(transform.forward*2.5f);
+            rb.AddForce(transform.forward * 2.5f);
         }
 
     }
@@ -75,6 +76,7 @@ public class controlCar : MonoBehaviour
     public TextMeshProUGUI showTime;
     void Update()
     {
+
         showTime.text = (times / 60).ToString() + "." + Mathf.Ceil((times % 60) * 1.666f).ToString();
         if (Input.GetKeyUp(KeyCode.R))
         {
@@ -112,5 +114,6 @@ public class controlCar : MonoBehaviour
         {
             SceneManager.LoadScene("home");
         }
+
     }
 }
