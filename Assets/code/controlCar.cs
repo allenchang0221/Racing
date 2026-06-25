@@ -45,10 +45,10 @@ public class controlCar : MonoBehaviour
     }
     public void J()
     {
-        if (rb.velocity.magnitude < 12)
+        if (rb.velocity.magnitude < 20)
         {
             rb.angularVelocity *= 0.98f;
-            rb.AddForce(transform.forward);
+            rb.AddForce(transform.forward*2.5f);
         }
 
     }

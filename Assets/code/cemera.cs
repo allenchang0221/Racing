@@ -5,10 +5,11 @@ using UnityEngine;
 public class cemera : MonoBehaviour
 {
     public GameObject car;
+    public Camera cam;
     // Start is called before the first frame update
     void Start()
     {
-
+        cam = Camera.main;
     }
     int mode = 0;
     // Update is called once per frame
