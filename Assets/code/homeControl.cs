@@ -10,24 +10,28 @@ public class homeControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetFloat("HIGH") == 0)
+        if (PlayerPrefs.GetInt("HIGH") == 0)
         {
             PlayerPrefs.SetFloat("HIGH", 1000000);
         }
-        last.text = "Last record   " + (controlCar.times/60).ToString("F2");
-        float a = PlayerPrefs.GetFloat("HIGH");
+        last.text = "Last record   " + (controlCar.times / 60).ToString() + "." + ((controlCar.times * 100 / 60) % 60).ToString();
+        float a = PlayerPrefs.GetInt("HIGH");
         if (a > controlCar.times)
         {
-            PlayerPrefs.SetFloat("HIGH", controlCar.times);
-        }
-        high.text = "Highest record   " + (PlayerPrefs.GetFloat("HIGH")/60).ToString("F2");
+            PlayerPrefs.SetInt("HIGH", controlCar.times);
+    }
+    high.text = "Highest record   " + (PlayerPrefs.GetInt("HIGH")/60).ToString()+"."+ ((PlayerPrefs.GetInt("HIGH")*100/60) % 60).ToString();
 
     }
+    public void reset()
+    {
 
+        PlayerPrefs.SetInt("HIGH", 100000000);
+    }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log((controlCar.times).ToString()+"   "+PlayerPrefs.GetFloat("HIGH"));
+        Debug.Log((controlCar.times).ToString()+"   "+PlayerPrefs.GetInt("HIGH"));
     }
     public void START()
     {
