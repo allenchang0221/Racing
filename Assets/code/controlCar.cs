@@ -25,52 +25,57 @@ public class controlCar : MonoBehaviour
     public void R()
     {
 
-        transform.position = new Vector3(transform.position.x, 0, Mathf.Sin(transform.position.x / 8) * 50);
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+            transform.position = new Vector3(transform.position.x, 0, Mathf.Sin(transform.position.x / 8) * 50);
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        
     }
     public void K()
     {
-        //rb.AddForce(new Vector3(Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), -0.25f, Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y))*-0.5f);
-        rb.AddForce(rb.velocity * -0.45f);
-        //rb.velocity = Vector3.zero;
-        //rb.AddForce(-1*new Vector3(Mathf.Sin(Mathf.Deg2Rad * ((transform.eulerAngles.y + engleTurn) % 360)), 0, Mathf.Cos(Mathf.Deg2Rad * ((transform.eulerAngles.y + engleTurn) % 360))) );
-        //rb.AddForce(-1 * Vector3.Project(rb.velocity, transform.right) * 0.00125f);
-        GameObject driftLeft = Instantiate(drift);
-        driftLeft.transform.position = transform.position + new Vector3(.21f, 0, 0) - transform.forward;
-        GameObject driftRight = Instantiate(drift);
-        driftRight.transform.position = transform.position - new Vector3(.42f, 0, 0) - transform.forward;
+            //rb.AddForce(new Vector3(Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), -0.25f, Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y))*-0.5f);
+            rb.AddForce(rb.velocity * -0.45f);
+            //rb.velocity = Vector3.zero;
+            //rb.AddForce(-1*new Vector3(Mathf.Sin(Mathf.Deg2Rad * ((transform.eulerAngles.y + engleTurn) % 360)), 0, Mathf.Cos(Mathf.Deg2Rad * ((transform.eulerAngles.y + engleTurn) % 360))) );
+            //rb.AddForce(-1 * Vector3.Project(rb.velocity, transform.right) * 0.00125f);
+            GameObject driftLeft = Instantiate(drift);
+            driftLeft.transform.position = transform.position + new Vector3(.21f, 0, 0) - transform.forward;
+            GameObject driftRight = Instantiate(drift);
+            driftRight.transform.position = transform.position - new Vector3(.42f, 0, 0) - transform.forward;
+        
     }
     public void J()
     {
-        if (rb.velocity.magnitude < 12)
-        {
-            rb.angularVelocity *= 0.98f;
-            rb.AddForce(transform.forward);
-        }
+            if (rb.velocity.magnitude < 12)
+            {
+                rb.angularVelocity *= 0.98f;
+                rb.AddForce(transform.forward);
+            }
+        
     }
     public void A()
     {
-        if (rb.angularVelocity.magnitude < limitRotation)
-        {
+            if (rb.angularVelocity.magnitude < limitRotation)
+            {
 
-            rb.AddTorque(new Vector3(0, -0.8f, 0));
-        }
+                rb.AddTorque(new Vector3(0, -0.8f, 0));
+            }
+        
     }
     public void D()
     {
-        if (rb.angularVelocity.magnitude < limitRotation)
-        {
+            if (rb.angularVelocity.magnitude < limitRotation)
+            {
 
-            rb.AddTorque(new Vector3(0, 0.8f, 0));
-        }
+                rb.AddTorque(new Vector3(0, 0.8f, 0));
+            }
+        
     }
     float limitRotation;
     public GameObject drift;
     public TextMeshProUGUI showTime;
     void Update()
     {
-        showTime.text = (times / 60).ToString()+"."+Mathf.Ceil((times % 60)*1.666f).ToString();
+        showTime.text = (times / 60).ToString() + "." + Mathf.Ceil((times % 60) * 1.666f).ToString();
         if (Input.GetKeyUp(KeyCode.R))
         {
             R();
@@ -78,7 +83,8 @@ public class controlCar : MonoBehaviour
 
         if (Input.GetKey(KeyCode.K))
         {
-            K(); }
+            K();
+        }
         if (Input.GetKey(KeyCode.J) && rb.velocity.magnitude < 12)
         {
             J();
