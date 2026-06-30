@@ -22,7 +22,7 @@ public class homeControl : MonoBehaviour
     {
         Debug.Log((controlCar.times).ToString()+"   "+PlayerPrefs.GetInt("HIGH"));
 
-        if (!PlayerPrefs.HasKey("HIGH"))
+        if (!PlayerPrefs.HasKey("HIGH") || PlayerPrefs.GetInt("HIGH")==0)
         {
 
             reset();
