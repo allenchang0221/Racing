@@ -2266,6 +2266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d32c82942c32b34bba45143e2c00b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goast: {fileID: 5621057211259534690, guid: de4d60cef052cf44599a5d782e4a011e, type: 3}
   drift: {fileID: 3985927355788573597, guid: 079e44e94d5592a419ae8b8c4c740803, type: 3}
   showTime: {fileID: 1461131622}
 --- !u!65 &1826451849

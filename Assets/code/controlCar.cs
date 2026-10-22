@@ -1,17 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class controlCar : MonoBehaviour
 {
+    public GameObject goast;
+    GameObject goastControl;
     Rigidbody rb;
     public static int times = 100000000;
+    public static List<Vector2> position = new List<Vector2>();
+    public static List<Vector2> positioned = new List<Vector2>();
+    public static List<Vector2> eulerAngle = new List<Vector2>();
+    public static List<Vector2> eulerAngled = new List<Vector2>();
     // Start is called before the first frame update
     void Start()
     {
+        goastControl = Instantiate(goast);
         //PlayerPrefs.DeleteKey("HIGH");
         times = 0;
         Application.targetFrameRate = 60;
@@ -25,7 +33,6 @@ public class controlCar : MonoBehaviour
     //}
     public void R()
     {
-
         transform.position = new Vector3(transform.position.x, 0, Mathf.Sin(transform.position.x / 8) * 50);
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
@@ -76,7 +83,15 @@ public class controlCar : MonoBehaviour
     public TextMeshProUGUI showTime;
     void Update()
     {
-
+        try
+        {
+            goastControl.transform.position = positioned[times];
+            goastControl.transform.eulerAngles = eulerAngled[times];
+            Debug.Log(positioned[times]);
+        }
+        catch { }
+        position.Add(transform.position);
+        eulerAngle.Add(transform.eulerAngles);
         showTime.text = (times / 60).ToString() + "." + Mathf.Ceil((times % 60) * 1.666f).ToString();
         if (Input.GetKeyUp(KeyCode.R))
         {
@@ -108,10 +123,13 @@ public class controlCar : MonoBehaviour
             D();
         }
         rb.angularVelocity *= 0.98f;
-        Debug.Log(rb.velocity.magnitude + " " + rb.angularVelocity.magnitude);
         times++;
         if (transform.position.x > 90)
         {
+            positioned = position.Select(v => v).ToList();
+            eulerAngled = eulerAngle.Select(v => v).ToList();
+            position.Clear();
+            eulerAngle.Clear();
             SceneManager.LoadScene("home");
         }
 
