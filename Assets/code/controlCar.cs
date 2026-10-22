@@ -12,13 +12,19 @@ public class controlCar : MonoBehaviour
     GameObject goastControl;
     Rigidbody rb;
     public static int times = 100000000;
-    public static List<Vector2> position = new List<Vector2>();
-    public static List<Vector2> positioned = new List<Vector2>();
-    public static List<Vector2> eulerAngle = new List<Vector2>();
-    public static List<Vector2> eulerAngled = new List<Vector2>();
+    public static List<Vector3> position = new List<Vector3>();
+    public static List<Vector3> positioned = new List<Vector3>();
+    public static List<Vector3> eulerAngle = new List<Vector3>();
+    public static List<Vector3> eulerAngled = new List<Vector3>();
     // Start is called before the first frame update
     void Start()
     {
+        try
+        {
+            positioned = PlayerPrefs.GetString("goastPosition").Split("\n").Select(s => new Vector3(float.Parse(s.Split(" ")[0]), float.Parse(s.Split(" ")[1]), float.Parse(s.Split(" ")[2]))).ToList();
+            eulerAngled = PlayerPrefs.GetString("goastEulerAngle").Split("\n").Select(s => new Vector3(float.Parse(s.Split(" ")[0]), float.Parse(s.Split(" ")[1]), float.Parse(s.Split(" ")[2]))).ToList();
+        }
+        catch { }
         goastControl = Instantiate(goast);
         //PlayerPrefs.DeleteKey("HIGH");
         times = 0;

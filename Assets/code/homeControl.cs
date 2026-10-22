@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class homeControl : MonoBehaviour
 {
-    public TextMeshProUGUI last,high;
+    public TextMeshProUGUI last, high;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +22,9 @@ public class homeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log((controlCar.times).ToString()+"   "+PlayerPrefs.GetInt("HIGH"));
+        Debug.Log((controlCar.times).ToString() + "   " + PlayerPrefs.GetInt("HIGH"));
 
-        if (!PlayerPrefs.HasKey("HIGH") || PlayerPrefs.GetInt("HIGH")==0)
+        if (!PlayerPrefs.HasKey("HIGH") || PlayerPrefs.GetInt("HIGH") == 0)
         {
 
             reset();
@@ -31,6 +33,8 @@ public class homeControl : MonoBehaviour
         float a = PlayerPrefs.GetInt("HIGH");
         if (a > controlCar.times)
         {
+            PlayerPrefs.SetString("goastPosition", string.Join("\n", controlCar.positioned.Select(p => $"{p.x} {p.y} {p.z}").ToList()));
+            PlayerPrefs.SetString("goastEulerAngle", string.Join("\n", controlCar.eulerAngle.Select(p => $"{p.x} {p.y} {p.z}").ToList()));
             PlayerPrefs.SetInt("HIGH", controlCar.times);
         }
         high.text = "Highest record   " + (PlayerPrefs.GetInt("HIGH") / 60).ToString() + "." + ((PlayerPrefs.GetInt("HIGH") * 100 / 60) % 60).ToString();
